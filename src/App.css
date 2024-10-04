@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+.cs {
+  width: 30px;
+  height: 30px;
+  border: solid black 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.juego {
+  display: grid;
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px;
+}
+
+.cs:hover {
+  background-color: #46aaec;
+}
