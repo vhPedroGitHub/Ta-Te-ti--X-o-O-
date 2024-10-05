@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function Casilla({
-  campos,
-  setCampos,
   numeroCasilla,
   turnoAnterior,
   setturnoAnterior,
@@ -24,14 +22,7 @@ function Casilla({
       listCasillas[numeroCasilla] = turnoAnterior == "X" ? "O" : "X";
       setlistCasillas(listCasillas);
     }
-    setCampos(" ");
   };
-
-  useEffect(() => {
-    if (campos == "O") {
-      setCampo(" ");
-    }
-  }, [campos]);
 
   return (
     <>
@@ -46,7 +37,7 @@ function App() {
   const casillas = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
   const [turnoAnterior, setturnoAnterior] = useState("X");
   const [listCasillas, setlistCasillas] = useState(casillas);
-  const [campos, setCampos] = useState(" ");
+  const [reinicio, setReinicio] = useState(0);
 
   if (
     (listCasillas[0] == turnoAnterior &&
@@ -74,7 +65,7 @@ function App() {
       listCasillas[5] == turnoAnterior &&
       listCasillas[8] == turnoAnterior)
   ) {
-    setCampos("O");
+    setReinicio((r) => r + 9);
     setlistCasillas(casillas);
     setturnoAnterior("X");
   }
@@ -82,8 +73,7 @@ function App() {
   const cass = listCasillas.map((casilla, index) => {
     return (
       <Casilla
-        campos={campos}
-        setCampos={setCampos}
+        key={reinicio + index}
         numeroCasilla={index}
         turnoAnterior={turnoAnterior}
         setturnoAnterior={setturnoAnterior}
