@@ -1,57 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-
-const TURNS = {
-  X: "X",
-  O: "O",
-};
-
-const COMBINACIONES = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-
-function Win({ children, turnoActual, action, isWin }) {
-  return (
-    <>
-      <section className={`win win-${isWin ? "on" : "off "}`}>
-        <span>{children}</span>
-        <Casilla>{turnoActual === TURNS.O ? TURNS.X : TURNS.O}</Casilla>
-        <button onClick={action}>Reiniciar Juego</button>
-      </section>
-    </>
-  );
-}
-
-function Empate({ children, action, isEmpate }) {
-  return (
-    <>
-      <section className={`win win-${isEmpate ? "on" : "off "}`}>
-        <span>{children}</span>
-        <button onClick={action}>Reiniciar Juego</button>
-      </section>
-    </>
-  );
-}
-
-function Casilla({ children, numeroCasilla, isTurn, onAction }) {
-  return (
-    <>
-      <div
-        className={`cs-${numeroCasilla} cs cs-${isTurn ? "on" : "off"}`}
-        onClick={() => onAction(numeroCasilla)}
-      >
-        {children}
-      </div>
-    </>
-  );
-}
+import Casilla from "./componnets/Casilla";
+import Empate from "./componnets/Empate";
+import Win from "./componnets/Win";
+import { TURNS, COMBINACIONES } from "./constants";
 
 function App() {
   const [turnoActual, setturnoActual] = useState(TURNS.O);
