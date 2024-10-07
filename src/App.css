@@ -1,4 +1,5 @@
 body {
+  position: relative;
   margin: 0;
 }
 
@@ -18,14 +19,47 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .juego {
   display: grid;
   grid-template-columns: 30px 30px 30px;
   grid-template-rows: 30px 30px 30px;
+  gap: 10px;
 }
 
-.cs:hover {
-  background-color: #46aaec;
+.turnos {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cs-on {
+  background-color: aqua;
+}
+
+.win {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: solid black 2px;
+  border-radius: 10%;
+  top: calc(50vh - 150px);
+  right: calc(50vw - 150px);
+  background-color: #222;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.win-off {
+  visibility: hidden;
+}
+
+.win-on {
+  visibility: visible;
 }
