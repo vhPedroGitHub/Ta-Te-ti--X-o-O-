@@ -1,9 +1,12 @@
-import { useState } from "react";
+// hooks
+import { useState, useEffect } from "react";
+// importaciones
 import "./App.css";
 import Casilla from "./componnets/Casilla";
 import Empate from "./componnets/Empate";
 import Win from "./componnets/Win";
-import { TURNS, COMBINACIONES } from "./constants";
+import { TURNS } from "./variables";
+import { detectEmpate, detectWinner } from "./logic";
 
 function App() {
   const [turnoActual, setturnoActual] = useState(TURNS.O);
@@ -11,37 +14,43 @@ function App() {
   const [win, setWin] = useState(false);
   const [empate, setEmpate] = useState(false);
 
+  useEffect(() => {
+    try {
+      const game = JSON.parse(window.localStorage.getItem("partida"));
+      setlistCasillas(game.jugadas);
+      setturnoActual(game.turno);
+      setWin(game.winner);
+      console.log(game.winner);
+    } catch {
+      console.log();
+    }
+  }, []);
+
   let modal;
 
   const handleClick = (index) => {
-    if (listCasillas[index] != null || win) return null;
+    if (listCasillas[index] != null && !win) return null;
 
-    setturnoActual(turnoActual === TURNS.O ? TURNS.X : TURNS.O);
+    const turno = turnoActual === TURNS.O ? TURNS.X : TURNS.O;
+    setturnoActual(turno);
 
     const newListaCasillas = [...listCasillas];
     newListaCasillas[index] = turnoActual;
     setlistCasillas(newListaCasillas);
 
-    setWin(detectWinner(newListaCasillas));
+    const iswin = detectWinner(newListaCasillas, turnoActual);
+
+    setWin(iswin);
     setEmpate(detectEmpate(newListaCasillas));
-  };
 
-  const detectWinner = (casillasJugadas) => {
-    for (const combinacion of COMBINACIONES) {
-      const [a, b, c] = combinacion;
+    // guardamos la informacion de la partida actual en el localStorage
+    const partida = {
+      jugadas: newListaCasillas,
+      turno: turno,
+      winner: iswin,
+    };
 
-      if (
-        casillasJugadas[a] === casillasJugadas[b] &&
-        casillasJugadas[a] === casillasJugadas[c] &&
-        casillasJugadas[a] === turnoActual
-      )
-        return true;
-    }
-    return false;
-  };
-
-  const detectEmpate = (casillasJugadas) => {
-    return casillasJugadas.every((casilla) => casilla != null) ? true : false;
+    window.localStorage.setItem("partida", JSON.stringify(partida));
   };
 
   const resetGame = () => {
@@ -49,6 +58,14 @@ function App() {
     setEmpate(false);
     setlistCasillas(Array(9).fill(null));
     setturnoActual(TURNS.O);
+
+    const partida = {
+      jugadas: Array(9).fill(null),
+      turno: TURNS.O,
+      winner: false,
+    };
+
+    window.localStorage.setItem("partida", JSON.stringify(partida));
   };
 
   if (win) {
@@ -65,6 +82,7 @@ function App() {
       </Empate>
     );
   }
+
   return (
     <>
       {modal}

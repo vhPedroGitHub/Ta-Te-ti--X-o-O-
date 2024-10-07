@@ -1,5 +1,5 @@
 import Casilla from "./Casilla";
-import { TURNS } from "../constants";
+import { TURNS } from "../variables";
 
 function Win({ children, turnoActual, action, isWin }) {
   return (
