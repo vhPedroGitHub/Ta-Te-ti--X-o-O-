@@ -4,7 +4,7 @@ phases:
   install:
     runtime-version:
         nodejs: 20
-        
+
     commands:
       - echo Entered the install phase...
       
@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      - npm install
+      - npm install --prefix ./front
 
     finally:
       - echo This always runs even if the login command fails 
@@ -23,7 +23,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - npm run build
+      - npm run build --prefix ./front
 
     finally:
       - echo This always runs even if the install command fails
