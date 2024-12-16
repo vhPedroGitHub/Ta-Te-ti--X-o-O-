@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignorar directorios de Terraform
+.terraform/
+
+# Ignorar archivos de estado de Terraform
+*.tfstate
+*.tfstate.*
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos de variables sensibles
+*.tfvars
+*.tfvars.json
+
+# Ignorar archivos de configuración de CLI
+.terraformrc
+terraform.rc
+
+# Ignorar archivos de bloqueo transitorios creados por Terraform
+*.tfstate.lock.info
+
+# Ignorar archivos de plan (si se generan)
+*tfplan*
