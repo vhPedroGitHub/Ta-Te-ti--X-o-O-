@@ -22,6 +22,6 @@ phases:
     finally:
       - echo This always runs even if the install command fails
 
-# artifacts:
-#   files:
-#     - ./front/dist
+artifacts:
+  files:
+    - "**/*"
