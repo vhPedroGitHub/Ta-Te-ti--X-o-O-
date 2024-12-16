@@ -3,43 +3,25 @@ version: 0.2
 phases:
   install:
     runtime-version:
-        nodejs: 18
-        docker: 20
+        nodejs: 22
 
     commands:
       - echo Entered the install phase...
+      - npm install --prefix ./front
       
     finally:
       - echo This always runs even if the update or install command fails 
-
-  pre_build:
-    commands:
-      - echo Entered the pre_build phase...
-      # - node -v
-      # - npm -v
-      # - npm install --prefix ./front
-      - docker run hello-world
-      
-    finally:
-      - echo This always runs even if the login command fails 
 
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      # - npm run build --prefix ./front
+      - npm run build --prefix ./front
+
 
     finally:
       - echo This always runs even if the install command fails
-  post_build:
-    commands:
-      - echo Entered the post_build phase...
-      - echo Build completed on `date`
 
-artifacts:
-  files:
-    - ./front/dist
-
-cache:
-  paths:
-    - ./front/node_modules/**/* # Cache para acelerar futuras construcciones
+# artifacts:
+#   files:
+#     - ./front/dist
