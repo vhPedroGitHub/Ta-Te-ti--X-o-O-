@@ -35,8 +35,8 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: dist # Cambia esto según tu estructura de directorios
+  base-directory: ./front/dist # Cambia esto según tu estructura de directorios
 
 cache:
   paths:
-    - node_modules/**/* # Cache para acelerar futuras construcciones
+    - ./front/node_modules/**/* # Cache para acelerar futuras construcciones
