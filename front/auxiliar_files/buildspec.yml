@@ -6,7 +6,7 @@ phases:
       - echo Entered the install phase...
       - sudo apt-get update && sudo apt-get upgrade -y
       - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | /bin/bash
-      - export NVM_DIR="$HOME/.nvm"
+      - export NVM_DIR="/root/.nvm"
       - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' # Cargar NVM
       - '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' # Cargar autocompletado de NVM
 
