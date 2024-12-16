@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | /bin/bash
       - nvm install 22
       - nvm use 22
 
