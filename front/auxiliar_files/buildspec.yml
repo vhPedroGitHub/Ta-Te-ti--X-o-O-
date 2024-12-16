@@ -5,23 +5,21 @@ phases:
     commands:
       - echo Entered the install phase...
       - sudo apt-get update
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | /bin/bash
-      - export NVM_DIR="/root/.nvm"
-      - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' # Cargar NVM
-      - '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' # Cargar autocompletado de NVM
-
+      - sudo apt install docker-ce docker-ce-cli containerd.io -y
+      - docker pull node:22-alpine
+      - docker run node:22-alpine node -v
+      - docker run node:22-alpine npm -v 
     finally:
       - echo This always runs even if the update or install command fails 
+
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      - nvm --version
-      - nvm install 20
-      - nvm use 20
       - npm install
 
     finally:
       - echo This always runs even if the login command fails 
+
   build:
     commands:
       - echo Entered the build phase...
