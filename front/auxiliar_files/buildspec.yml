@@ -4,6 +4,9 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+      - nvm install 22
+      - nvm use 22
 
     finally:
       - echo This always runs even if the update or install command fails 
@@ -17,6 +20,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
+      - npm run build
 
     finally:
       - echo This always runs even if the install command fails
@@ -24,7 +28,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      
+
 artifacts:
   files:
     - ../dist/**/*
