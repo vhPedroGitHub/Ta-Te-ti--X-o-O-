@@ -14,6 +14,8 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
+      - nvm -v 
+      - node -v
       - npm -v
       - npm install --prefix ./front
 
@@ -35,8 +37,7 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: ./front/dist # Cambia esto según tu estructura de directorios
+    - ./front/dist
 
 cache:
   paths:
