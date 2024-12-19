@@ -125,11 +125,3 @@ resource "aws_lambda_function" "lbdfuc" {
   }
   depends_on           = [aws_s3_object.lambda_zip]
 }
-
-# Permitir que cada alarma invoque la función Lambda
-resource "aws_lambda_permission" "allow_cloudwatch_invocation" {
-  statement_id     = "AllowCloudWatchToInvokeLambda"
-  action           = "lambda:InvokeFunction"
-  function_name    = aws_lambda_function.lbdfuc.function_name
-  principal        = "lambda.alarms.cloudwatch.amazonaws.com"
-}

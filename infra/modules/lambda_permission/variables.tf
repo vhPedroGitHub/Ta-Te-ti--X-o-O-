@@ -1,36 +1,19 @@
-# variable "statement_id" {
-#   description = "statement_id"
-#   type        = string
-#   default     = "AllowExecutionFromAPIGateway"
-# }
-# variable "action" {
-#   description = "action"
-#   type        = string
-#   default     = "lambda:InvokeFunction"
-# }
-# variable "integration_lambda_function_name" {
-#   description = "integration_lambda_function_name"
-#   type        = string
-# }
-# variable "principal" {
-#   description = "principal"
-#   type        = string
-#   default     = "apigateway.amazonaws.com"
-# }
-# variable "source_arn" {
-#   description = "source_arn"
-#   type        = string
-# }
+variable "statement_id" {
+  description = "The statement ID for the Lambda permission"
+  type        = string
+}
 
-# variable "source_account" {
-#   description = " This parameter is used when allowing cross-account access, or for S3 and SES. The AWS account ID (without a hyphen) of the source owner."
-#   type        = string
-#   default     = null
-# }
+variable "action" {
+  description = "The action permitted by the Lambda permission"
+  type        = string
+}
 
-# variable "alarm_arn" {
-#   type = string
-# }
-variable "lambda_function_name" {
-  type = string
+variable "function_name" {
+  description = "The name of the Lambda function"
+  type        = string
+}
+
+variable "principal" {
+  description = "The principal who is allowed to invoke the Lambda function"
+  type        = string
 }

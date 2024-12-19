@@ -1,7 +1,7 @@
 # Permitir que cada alarma invoque la función Lambda
 resource "aws_lambda_permission" "allow_cloudwatch_invocation" {
-  statement_id     = "AllowCloudWatchToInvokeLambda"
-  action           = "lambda:InvokeFunction"
-  function_name    = var.lambda_function_name
-  principal        = "cloudwatch.amazonaws.com"
+  statement_id     = var.statement_id
+  action           = var.action
+  function_name    = var.function_name
+  principal        = var.principal
 }
