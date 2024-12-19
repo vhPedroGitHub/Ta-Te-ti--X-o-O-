@@ -13,14 +13,13 @@
 #   }
 
 resource "aws_instance" "server" {
-  # ami                    = coalesce(var.ami_specific_id, data.aws_ami.latest_ami.id)
-  ami                    = var.ami_specific_id
-  instance_type          = var.instance_type
-  subnet_id              = var.subnet_id
-  vpc_security_group_ids = var.vpc_security_group_ids
+  # ami                       = coalesce(var.ami_specific_id, data.aws_ami.latest_ami.id)
+  ami                         = var.ami_specific_id
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = var.vpc_security_group_ids
   associate_public_ip_address = var.associate_public_ip_address
   key_name = var.public_key
-  
 
   # root_block_device {
   #   volume_size = var.volume_size

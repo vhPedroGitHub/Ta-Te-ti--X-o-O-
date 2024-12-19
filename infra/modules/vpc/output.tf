@@ -19,6 +19,7 @@ output "private_subnet_cidrs" {
   value       = aws_subnet.private_subnet[*].cidr_block
   description = "list of cidr block of public subnets"
 }
+
 output "igw_id" {
   value       = aws_internet_gateway.igw.id
   description = "id of internet gateway"

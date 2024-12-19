@@ -6,5 +6,4 @@ module "vpc_main" {
   azs                 = var.azs 
   private_subnet_cidr = var.private_subnet_cidr
   public_subnet_cidr  = var.public_subnet_cidr 
-  # the tags variable have a default valors
 }

@@ -19,7 +19,6 @@ module "template" {
   public_key = var.public_key
   ami_type = var.ami_type
 
-
   # ---------
   # RDS VARS|
   # ---------
@@ -37,4 +36,8 @@ module "template" {
   ingress_rules = var.ingress_rules
   grup_sg_description = var.grup_sg_description
   grup_sg_name = var.grup_sg_name
+
+  grup_sg_name_bd = var.grup_sg_name_bd
+  grup_sg_description_bd = var.grup_sg_description_bd
+  egress_rules_bd = var.egress_rules_bd
 }

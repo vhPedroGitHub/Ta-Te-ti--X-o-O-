@@ -12,7 +12,7 @@ resource "aws_db_instance" "postgres_db" {
   
   publicly_accessible    = false
 
-  vpc_security_group_ids= [var.security_group]
+  vpc_security_group_ids = var.security_group
   
   db_subnet_group_name   = aws_db_subnet_group.subnet_group_rds.name
   
